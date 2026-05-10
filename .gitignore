@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Project data (never commit DB or PDFs)
+data/*.db
+data/*.db-shm
+data/*.db-wal
+data/*.sqlite*
+logs/
+verification/phase_*_results/
+
+# Local config (overrides default.toml)
+config/local.toml
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# Streamlit
+.streamlit/secrets.toml

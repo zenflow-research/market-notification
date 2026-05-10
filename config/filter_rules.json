@@ -1,0 +1,114 @@
+[
+  {
+    "rule_type": "category",
+    "pattern": "Closure of Trading Window",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Routine compliance, no investment value"
+  },
+  {
+    "rule_type": "category",
+    "pattern": "Opening of Trading Window",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Routine compliance, no investment value"
+  },
+  {
+    "rule_type": "category",
+    "pattern": "Trading Window",
+    "source": "NSE",
+    "action": "hide",
+    "created_by": "system",
+    "reason": "NSE Trading Window category - all are closure/opening intimations"
+  },
+  {
+    "rule_type": "subcategory",
+    "pattern": "Closure of Trading Window",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Routine compliance, no investment value"
+  },
+  {
+    "rule_type": "category",
+    "pattern": "Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Regulatory compliance - depository participant attestation"
+  },
+  {
+    "rule_type": "category",
+    "pattern": "Reg. 13(3) - Statement of Investor Complaints",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Routine quarterly filing"
+  },
+  {
+    "rule_type": "category",
+    "pattern": "Loss of Share Certificate",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Administrative, no investment value"
+  },
+  {
+    "rule_type": "category",
+    "pattern": "Duplicate Certificate",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Administrative, no investment value"
+  },
+  {
+    "rule_type": "category",
+    "pattern": "Newspaper Publication",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Duplicate of other filings"
+  },
+  {
+    "rule_type": "category",
+    "pattern": "AGM/EGM",
+    "source": null,
+    "action": "hide",
+    "created_by": "auto",
+    "reason": "Auto-learned from brain history: routinely ignored by user"
+  },
+  {
+    "rule_type": "keyword",
+    "pattern": "Trading Window closure",
+    "source": null,
+    "action": "hide",
+    "created_by": "user",
+    "reason": "Low-value Trading Window closure notifications - user-curated"
+  },
+  {
+    "rule_type": "headline_regex",
+    "pattern": "newspaper\\s+(advertisement|publication|notice)",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Newspaper ad/notice filings are not material"
+  },
+  {
+    "rule_type": "headline_regex",
+    "pattern": "loss\\s+of\\s+share\\s+certificate",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Administrative loss-of-cert intimations"
+  },
+  {
+    "rule_type": "headline_regex",
+    "pattern": "issue\\s+of\\s+duplicate\\s+share\\s+certificate",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Administrative duplicate-cert intimations"
+  }
+]

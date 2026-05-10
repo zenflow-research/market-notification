@@ -1,0 +1,26 @@
+[
+  {
+    "rule_type": "category",
+    "pattern": "Trading Window",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Trading window opening/closure intimations are routine compliance"
+  },
+  {
+    "rule_type": "headline_regex",
+    "pattern": "newspaper\\s+(advertisement|publication)",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Newspaper ad notices are not material"
+  },
+  {
+    "rule_type": "category",
+    "pattern": "Reg. 30 Disclosures (LODR)",
+    "source": null,
+    "action": "hide",
+    "created_by": "system",
+    "reason": "Generic regulatory disclosures unless specifically about an event"
+  }
+]

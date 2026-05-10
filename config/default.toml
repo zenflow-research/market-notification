@@ -1,0 +1,72 @@
+# market-notification default configuration.
+# Override locally via config/local.toml (gitignored) or MN_* env vars.
+
+[db]
+url = "sqlite:///data/notifications.db"
+wal = true
+busy_timeout_ms = 5000
+
+[ollama]
+url = "http://localhost:11434"
+gemma_model = "gemma4-zenflow-moe:latest"
+qwen_fallback_model = "qwen2.5:14b"
+request_timeout_s = 300
+keep_alive = "24h"
+
+[gemini_rr]
+binary = "C:/Users/user/bin/gemini-rr.cmd"
+default_timeout_s = 600
+
+[paths]
+pdf_dump_root = "D:/Notification Dump"
+log_dir = "G:/market_notification/logs"
+brain_screener_essential_db = "G:/brain/screener_essential.db"
+brain_notifications_db = "G:/brain/data/notifications.db"
+screener_original_root = "G:/Screener_original"
+company_sector_mapping_csv = "G:/Screener_original/screener_util/company_sector_mapping_master.csv"
+
+[paths.taxonomy]
+basic_industry = "G:/brain/screener_util/basic_industry_taxonomy.json"
+sector_kpis = "D:/Annual_report_extract/docs/sector_metrics_kpis.md"
+concall_taxonomy = "D:/claude-codex-gemini/docs/concall_extraction_taxonomy.md"
+
+[poller]
+interval_s = 60
+window_24x7 = true
+nse_records_per_poll = 50
+bse_records_per_poll = 100
+fetcher_request_timeout_s = 30
+
+[pipeline]
+sla_classify_minutes = 5
+pdf_max_pages_default = 20
+retry_max = 3
+retry_backoff_minutes = [2, 4, 8]
+
+[summarizer]
+prompt_version = "v1"
+batch_size = 1
+temperature = 0.1
+num_predict = 4096
+
+[classifier]
+prompt_version = "v1"
+temperature = 0.1
+num_predict = 1024
+
+[deep_dive]
+prompt_version = "v1"
+cache_default = true
+fundamentals_inject = "all"  # all | topic_only | none
+
+[backfill]
+brain_history = true
+screener_original_history = true
+
+[ui]
+port = 8501
+default_show_ignored = false
+list_page_size = 200
+
+[health]
+port = 8502

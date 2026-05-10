@@ -1,0 +1,84 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "market-notification"
+version = "0.1.0"
+description = "BSE/NSE corporate notification capture, classify, summarize, deep-dive, and Streamlit UI"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [{ name = "research", email = "research@zenflow.finance" }]
+dependencies = [
+    "sqlalchemy>=2.0",
+    "alembic>=1.13",
+    "pdfplumber>=0.10",
+    "PyMuPDF>=1.24",
+    "requests>=2.31",
+    "beautifulsoup4>=4.12",
+    "streamlit>=1.32",
+    "pydantic>=2.5",
+    "pydantic-settings>=2.2",
+    "click>=8.1",
+    "ollama>=0.1.7",
+    "python-dotenv>=1.0",
+    "tomli>=2.0; python_version<'3.11'",
+    "tenacity>=8.2",
+    "lxml>=5.0",
+    "pandas>=2.0",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=4.1",
+    "ruff>=0.4",
+    "mypy>=1.10",
+    "types-requests",
+]
+
+[project.scripts]
+mn-bootstrap-db = "market_notification.scripts.bootstrap_db:main"
+mn-poller = "market_notification.scripts.run_poller:main"
+mn-workers = "market_notification.scripts.run_workers:main"
+mn-ui = "market_notification.scripts.run_ui:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["market_notification*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-ra --strict-markers"
+markers = [
+    "integration: live external services required (Ollama, internet, etc.)",
+    "live_llm: requires Ollama with gemma model loaded",
+    "live_internet: requires BSE/NSE API access",
+    "perf: performance benchmark (asserts on wall-clock time)",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E", "F", "W", "I", "N", "B", "UP", "PL", "RUF", "SIM", "RET",
+]
+ignore = [
+    "PLR0913",  # too many arguments
+    "PLR2004",  # magic value
+]
+
+[tool.mypy]
+python_version = "3.10"
+strict = false
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+files = ["src/market_notification"]
